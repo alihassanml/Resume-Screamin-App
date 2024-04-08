@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% csrf_token %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">      
+    <style>
+      *{
+        margin: 0;
+        padding: auto;
+      }
+      .spikes {
+  position: relative;
+  background: #2c3e50;
+  height: 40vh;
+  display: flex;
+}
+
+.spikes::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  left: -60%;
+  top: 100%;
+  z-index: 10;
+  display: block;
+  height: 75px;
+  background-size: 75px 100%;
+  background-image: linear-gradient(135deg, #2c3e50 25%, transparent 25%), linear-gradient(225deg, #2c3e50 25%, transparent 25%);
+  background-position: 0 0;
+}
+.a1{
+  position: absolute;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-left: 30px;
+  margin-top: 60px;
+  color: rgb(134, 169, 235);
+
+}
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 40px;
+  height: 70px;
+  aspect-ratio: 1;
+   --c: linear-gradient(#3d75be 0 0);
+   --m: radial-gradient(farthest-side,#317fbe00 92%,#0000);
+  background: 
+    var(--c),var(--m),
+    var(--c),var(--m), 
+    var(--c),var(--m);
+  background-size: 8px 12px,8px 8px;
+  background-repeat: no-repeat;
+  animation: l16 1s infinite linear alternate;
+}
+@keyframes l16 {
+  0%,5%   {background-position: 0 50%             ,0 0               ,50% 50%             ,50% 0               ,100% 50%             ,100% 0}
+  16.67%  {background-position: 0 50%             ,0 calc(50% - 10px),50% 50%             ,50% 0               ,100% 50%             ,100% 0}
+  33.33%  {background-position: 0 calc(50% + 10px),0 50%             ,50% 50%             ,50% 0               ,100% 50%             ,100% 0}
+  50%     {background-position: 0 calc(50% + 10px),0 50%             ,50% 50%             ,50% calc(50% - 10px),100% 50%             ,100% 0}
+  66.67%  {background-position: 0 calc(50% + 10px),0 50%             ,50% calc(50% + 10px),50% 50%             ,100% 50%             ,100% 0}
+  83.33%  {background-position: 0 calc(50% + 10px),0 50%             ,50% calc(50% + 10px),50% 50%             ,100% 50%             ,100% calc(50% - 10px)}
+  95%,100%{background-position: 0 calc(50% + 10px),0 50%             ,50% calc(50% + 10px),50% 50%             ,100% calc(50% + 10px),100% 50%}
+}
+  ::-webkit-file-upload-button{
+    height: 50px;
+    width: 200px;
+    background-color: #2c3e50;
+    border: none;
+    color: white;
+  }
+    </style>
+<style>
+</style>
+    <body>
+      {% csrf_token %}
+      <section class="spikes">
+        <div class="loader" style="margin-left: 40px;"></div>
+        <h1 class="a1">Resume Screaming App</h1>
+        {% csrf_token %}
+      </section>
+        <form method="post" enctype="multipart/form-data" style="margin-top: 60px;">
+          {% csrf_token %}
+          <input type="hidden" name="csrfmiddlewaretoken" value="bxsN0VGUsptqiRe36xQdVcqApWORA1VWXLmnzqtpewf7DySarekGPrWLGXnrXH2k">
+          <p>
+            <label for="id_resume" style=" margin-left: 30%; color: #3d75be; font-size: 30px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Upload Your Resume</label>
+            <br>
+            <input type="file" name="resume" required id="id_resume" style="margin-left:30% ; color: #b4b4b44f; justify-content: center;  width: 600px; background-color: #3d75be; height: 50px; outline: none;">
+          </p>
+          <button type="submit" style="background-color: #2c3e50;  width: 160px; height: 50px; margin-left: 45%; margin-top: 10px; color: white; border: none  ;">Submit</button>
+          <br>
+          {% for fm in messages %}
+          {{fm}}
+          <div class="alert  alert-dismissible fade show" role="alert"  style="margin-top:20px ; margin-left: 30%; width: 44%; border: 2px solid #3d75be; padding-left: 30px; padding-top: 10px; color: rgb(0, 0, 0); background-color: #3d75bea1">
+            <span>Predication | {{pred}}</span>
+            <p>Category Name | {{category_name}}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endfor %}
+          
+        </form>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+      </body>
