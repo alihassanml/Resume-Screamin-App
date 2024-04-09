@@ -49,7 +49,7 @@ This project aims to develop a web application for enhancing the process of resu
 
 **Usage:**
 
-1. Clone the repository: `git clone https://github.com/your_username/resume-screaming-app.git`
+1. Clone the repository: `git clone https://github.com/alihassanml/Resume-screaming-app.git`
 2. Install the required libraries: `pip install -r requirements.txt`
 3. Navigate to the project directory: `cd resume-screaming-app`
 4. Run the Django server: `python manage.py runserver`
